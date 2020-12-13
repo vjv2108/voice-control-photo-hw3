@@ -6,7 +6,6 @@ from aws_requests_auth.aws_auth import AWSRequestsAuth
 
 def lambda_handler(event, context):
     query = event['queryStringParameters']['q']
-    print(query)
     vpc_endpoint = 'vpc-photos-hw3-lr5lb46tdj7dbtfdeunl74joem.us-east-1.es.amazonaws.com'
     
     img_url_list = []
@@ -39,7 +38,6 @@ def lambda_handler(event, context):
         labels.append(x) 
     if y is not None:
         labels.append(y)
-    print(labels)
     
     for label in labels:
         res = es.search(index="photos-hw3",q=label)
@@ -48,7 +46,6 @@ def lambda_handler(event, context):
             image = img['_source']['objectKey']
             img_url = 'https://s3.amazonaws.com/'+ bucket + '/' + image 
             img_url_list.append(img_url)
-    print(img_url_list)
     if labels:     
         return {   
 			'statusCode': 200,
