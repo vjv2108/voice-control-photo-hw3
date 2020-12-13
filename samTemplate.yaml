@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: CD Demo Lambda
 Resources:
-  CDDemoLambda:
+  Search:
     Type: 'AWS::Serverless::Function'
     Properties:
       FunctionName: LFX
@@ -22,7 +22,7 @@ Resources:
       Environment:
         Variables:
           REGION: us-east-1
-  CDDemoLambda:
+  Index:
     Type: 'AWS::Serverless::Function'
     Properties:
       FunctionName: LFX
